@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Meeting Room</title>
+    <title>Jitsi Meeting</title>
 </head>
 <body>
-<h1>Welcome to your meeting</h1>
+<h1>Welcome to your meeting, {{ $userName }}</h1>
 <div id="jitsi-container" style="height: 100vh; width: 100%;"></div>
 
-<script src="https://meet.jit.si/external_api.js"></script>
+<script src="https://47.130.73.49/external_api.js"></script>
 <script>
-    const domain = "meet.jit.si";
+    const domain = "47.130.73.49";
     const options = {
         roomName: "{{ $roomName }}",
         width: "100%",
@@ -17,6 +17,16 @@
         parentNode: document.querySelector('#jitsi-container'),
         userInfo: {
             displayName: "{{ $userName }}"
+        },
+        interfaceConfigOverwrite: {
+            // Customize the interface
+            TOOLBAR_BUTTONS: [
+                'microphone', 'camera', 'desktop', 'fullscreen', 'hangup' // Include only these buttons
+            ],
+            SHOW_JITSI_WATERMARK: false, // Hide Jitsi watermark
+            SHOW_BRAND_WATERMARK: false, // Hide brand watermark
+            SHOW_POWERED_BY: false, // Hide "Powered by Jitsi" label
+            filmStripOnly: false // Show full interface (false), or filmstrip only (true)
         }
     };
     const api = new JitsiMeetExternalAPI(domain, options);
@@ -27,9 +37,8 @@
 
     api.addEventListener('videoConferenceLeft', () => {
         console.log("Conference left!");
-        window.location.href = '/dashboard'; // Redirect after leaving
+        window.location.href = '/dashboard';
     });
 </script>
 </body>
 </html>
-

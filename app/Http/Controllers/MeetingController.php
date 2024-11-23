@@ -8,8 +8,8 @@ class MeetingController extends Controller
 {
     public function createMeeting()
     {
-        $roomName = 'Meeting-' . uniqid(); // Unique room name
-        $userName = auth()->user()->name; // Get logged-in user's name
+        $roomName = 'Meeting-' . uniqid(); // Generate unique room name
+        $userName = auth()->user()->name; // Get the name of the logged-in user
 
         return view('meeting', [
             'roomName' => $roomName,
