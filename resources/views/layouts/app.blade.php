@@ -28,6 +28,14 @@
             @endisset
 
             <!-- Page Content -->
+           @auth
+                 <nav>
+                        <ul>
+                            <li><a href="{{ url('/meeting') }}">Join Meeting</a></li>
+                                <!-- Other links -->
+                        </ul>
+                </nav>
+            @endauth
             <main>
                 {{ $slot }}
             </main>
