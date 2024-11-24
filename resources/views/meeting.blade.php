@@ -15,6 +15,10 @@
         width: "100%",
         height: "100%",
         parentNode: document.querySelector('#jitsi-container'),
+
+        configOverwrite: {
+            disableCertificateVerification: true
+        },
         userInfo: {
             displayName: "{{ $userName }}"
         },
