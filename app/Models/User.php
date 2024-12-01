@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'UID', 'id'); // 'UID' is the foreign key in the Schedule model
+    }
 }
