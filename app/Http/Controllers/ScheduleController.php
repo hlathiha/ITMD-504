@@ -134,7 +134,7 @@ class ScheduleController extends Controller
                     'EndTime' => $validatedData['EndTime'],
                     'Meeting_Link' => $meetingLink,
                     'UID' => $uid, // Store each user ID
-                    
+
                 ]);
 
                 Log::info("Meeting created for User ID: {$uid} with link: {$meetingLink}");
